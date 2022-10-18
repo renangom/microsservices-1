@@ -1,0 +1,42 @@
+.formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+.campo label {
+  color: #fff;
+}
+
+.campo input {
+  padding: 10px 20px;
+}
+.btn {
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #404040;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: ##0a58ca;
+}

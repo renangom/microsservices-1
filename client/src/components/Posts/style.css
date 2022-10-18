@@ -1,0 +1,23 @@
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.card {
+  width: 300px;
+  background-color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #404040;
+  border-radius: 4px;
+}
+
+.card-body {
+  overflow: hidden;
+  color: black;
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
