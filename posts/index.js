@@ -29,6 +29,11 @@ app.post('/posts', (req,res) => {
     res.status(201).send(posts[id])
 })
 
+app.post('/events', (req,res) => {
+    console.log('Event received: ', req.body.type);
+    res.send({});
+})
+
 
 
 
