@@ -11,12 +11,13 @@ export default function Posts() {
     const [posts, setPosts] = useState({});
     useEffect(() => {
         const handlePosts = async () => {
-            const res = await axios.get('http://localhost:4000/posts');
-            setPosts(res.data)
+            const res = await axios.get('http://localhost:4002/posts');
+            console.log(res.data)
+            setPosts(res.data.posts)
         }
 
         handlePosts();
-    }, [posts])
+    }, [])
 
 
     const renderedPosts = Object.values(posts).map((post) => {
@@ -26,7 +27,7 @@ export default function Posts() {
             <h3>{post.title}</h3>
           </div>
           <div className='comment'>
-            <CommentList postId={post.id} />
+            <CommentList comments={post.comments} />
             <CreateComment postId={post.id} />
           </div>
         </div>
