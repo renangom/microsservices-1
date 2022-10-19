@@ -1,8 +1,7 @@
 const express = require('express')
 const {randomBytes} = require('crypto');
-const { json } = require('express');
 const cors = require('cors')
-
+const axios = require('axios')
 
 const app = express();
 app.use(express.json());
@@ -21,8 +20,16 @@ app.post('/posts', (req,res) => {
         id,title
     }
 
+    axios.post('http://localhost:4005/events', {
+        type: 'PostCreated',
+        data:{
+            id, title
+        }
+    })
     res.status(201).send(posts[id])
 })
+
+
 
 
 app.listen(4000, () => {
