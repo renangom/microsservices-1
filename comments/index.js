@@ -47,11 +47,13 @@ app.post('/events', async(req,res) => {
         const {postId, id, status, content} = data;
         const comments = commentsByPostId[postId];
 
-        const comment = comments.find((comment) => comment.id === id);
+        const comment = comments.find((comment) => {
+            return comment.id === id;
+        });
 
         comment.status = status;
 
-        await axios.post('http://localhost:4005',{
+        await axios.post('http://localhost:4005/events',{
             type: 'CommentUpdated',
             data:{
                 id,
