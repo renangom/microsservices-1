@@ -19,22 +19,26 @@ app.post('/post/:id/comments', (req, res) => {
 
     const comments = commentsByPostId[postId] || [];
 
-    comments.push({id: commentId, content: content});
+    //criamos o comentários, precisamos enviar para o event-bus
+    //o event-bus precisa enviar para o serviço de moderação e para o query service também
+    comments.push({id: commentId, content: content, status:'pending'});
 
     commentsByPostId[postId] = comments;
 
+    //enviando os dados para o  event-bus
     axios.post('http://localhost:4005/events', {
         type: 'CommentCreated',
         data: {
             id: commentId,
             content,
-            postId
+            postId,
+            status:'pending'
         }
     })
     res.status(201).send(comments);
 })
 
-
+//recebendo aviso do event-bus
 app.post('/events', (req,res) => {
     console.log('Event received', req.body.type);
     res.send({});
