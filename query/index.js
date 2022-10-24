@@ -16,11 +16,14 @@ app.get('/posts', (req,res)=> {
 app.post('/events', (req,res) => {
     const {type, data} = req.body;
 
+    //eventos do tipo criação de post
     if(type === 'PostCreated'){
         const {id, title} = data;
 
         posts[id] = {id, title, comments: []};
     }
+
+    //eventos do tipo comentário criado
     if(type === 'CommentCreated'){
         const {id, content, postId, status} = data;
         const post = posts[postId];
